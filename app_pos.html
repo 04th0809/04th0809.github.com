@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<title></title>
+	</head>
+
+    <body>
+        <div id="a"></div>
+        <script>
+            location.href="mallcooapp://device/wifilocation?callback=fn";
+            var $box = document.querySelector('#a');
+            //var data = '{"success":1,"data":{"buildingId":"xx","floorId":"1","x":"1.000","y":"1.000"}}';
+            //var data = '{"success":0,"error":"失败原因"}';
+            function fn(data){
+                //{success:1,data:{buildingId:"xx",floorId:"1",x:"1.000",y:"1.000"}}
+                //{success:0,error:"失败原因"}
+                var d = JSON.parse(data), html='';
+                if(d.success){
+                    html += '<ul>';
+                    console.log(d.data)
+                    for(var i in d.data){
+                        html+= '<li>'+i +': '+d.data[i];
+                    }
+                    html+='</ul>';
+                }else{
+                    html = d.error;
+                }
+                $box.innerHTML = html;
+            }
+        </script>
+    </body>
+</html>
