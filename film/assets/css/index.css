@@ -1,0 +1,242 @@
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, lengend, input, button, textarea, select, p, blockquote, th, td { margin:0; padding: 0;}
+html, body, form, fieldset, p, div, h1, h2, h3, h4, h5, h6 { -webkit-text-size-adjust: none; }
+table { border-collapse: collapse; border-spacing: 0; }
+img { border: 0 none; vertical-align: top; }
+li { list-style-type: none; }
+caption, th { text-align: left; }
+h1, h2, h3, h4, h5, h6 { font-size: 100%;font-weight:400;}
+body, input, button, textarea, select { font-size: 12px;font-family:"Microsoft Yahei",微软雅黑,Arial,Helvetica;}
+body {line-height: 1.17; -webkit-text-size-adjust: none;-webkit-touch-callout: none;-webkit-user-select: none;}
+a {text-decoration: none; }
+a:link {text-decoration: none; }
+:focus { outline: none; }
+.clearfixed:after { content: "."; clear: both; display: block; height: 0; overflow: hidden; }
+.clearfixed { zoom: 1; display: block; }
+/* 增加清除浮动样式时，要注意当前元素是否为块结构，如果不是，要添加属性 display: block */
+*{-webkit-text-size-adjust: none; -moz-text-size-adjust: none; -ms-text-size-adjust: none; -o-text-size-adjust: none; text-size-adjust: none;box-sizing:border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;}
+::-webkit-scrollbar {width:0; height:0;}  /*滚动条样式*/
+::-ms-clear {display:none;}
+::-ms-reveal {display:none;}
+input::-webkit-input-placeholder{color:#999;}
+.none{display:none!important;}
+
+html{height:100%;-webkit-tap-highlight-color:transparent;}  /*去除点击页面中元素时出现的阴影*/
+.backTop{display:none;position:fixed;bottom:50px;right:15px;background:rgba(0,0,0,.7);border-radius:8px;width:42px;height:42px;z-index:10;}
+.backTop:before{content:'';position:absolute;left:12px;top:6px;
+width: 0px; height: 0px;border-width:10px; border-style: solid; border-color: transparent transparent #e7e7e7 transparent;cursor:pointer;}
+/* tab */
+.tab-content{display:none;}
+.tab-content.cur{display:block}
+
+.container{padding:10px 5px;}
+.searchBox{overflow:hidden;}
+.input-group {position:relative;display:table;border-collapse:separate;}
+.form-control {
+    background-color: #fff;
+    border:1px solid #ddd;
+    -webkit-border-bottom-left-radius:3px;
+    -webkit-border-top-left-radius:3px;
+    border-bottom-left-radius:3px;
+    border-top-left-radius:3px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.input-group .form-control {
+  position: relative;
+  z-index: 2;
+  float: left;
+  width: 100%;
+  margin-bottom: 0;
+  display: table-cell;
+  height:36px;
+  line-height:36px;
+  padding-left:5px;
+}
+
+.input-group-btn {display:table-cell;position:relative;font-size: 0;white-space:nowrap;width: 1%;vertical-align: middle;}
+.input-group-btn {position: relative;font-size: 0;white-space: nowrap;display: table-cell;}
+[class^="m-icon-"] {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-top: 3px;
+  line-height: 14px;
+  vertical-align: top;
+  background-image: url(../img/sp_1.png);
+  background-position: 0 0;
+  background-repeat: no-repeat;
+}
+.m-icon-magnifier{ width: 16px; height: 16px;background-position:0 0;background-size:100% auto;}
+.btn-sear{
+    width:36px;
+    height:36px;
+    background:#ccc;
+    border:1px solid #bbb;
+    -webkit-border-bottom-right-radius:3px;
+    -webkit-border-top-right-radius:3px;
+    border-bottom-right-radius:3px;
+    border-top-right-radius:3px;
+}
+.titBox{
+    height:36px;
+    padding-left:10px;
+    margin-top:10px;
+    background-color:#34495e;overflow:hidden;
+    -webkit-border-top-left-radius:5px;
+    -webkit-border-top-right-radius:5px;
+}
+.titBox h2{float:left;color:#fff;font-size:14px;line-height:36px;}
+.titBox .lk_btn{position:relative;float:right;width:36px;height:36px;background-color:#1e2f3f;}
+.titBox .lk_btn:before, .list_bd li .name:before,.compare_list .cur em:before{
+    content:'';
+    background-image: url(../img/sp_1.png);
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size:100% auto;
+}
+.titBox .lk_btn:before{position:absolute;left:10px;top:10px;width:16px;height:16px;}
+.titBox .index_btn:before{background-position:0 -52px;}
+.titBox .back_home_btn:before{background-position:0 -79px;}
+.frame_cont{border:1px solid #eee;padding:10px 5px;}
+.frame_cont .r_tab{height:36px;background:#ecf0f1;border-radius:6px;overflow:hidden;}
+.frame_cont .r_tab li{float:left;width:33.3%;line-height:36px;text-align:center;color:#7f8c8d;font-size:12px;}
+.frame_cont .r_tab .cur{background-color:#7f8c8d;color:#fff;}
+
+.list_bd{}
+.list_bd .r_list li{margin-top:15px;}
+.list_bd .r_list li .t .name{position:relative;font-size:14px;padding-left:16px;}
+.list_bd .r_list li .t .time{margin-left:10px;color:#8a9596}
+.list_bd .r_list li .t .name:before{position:absolute;left:0;top:0;width:16px;height:16px;background-position:0 -23px;}
+.list_bd .r_list li .p{height:16px;margin-top:6px;background-color:#ecf0f1;border-radius:5px;overflow:hidden;}
+.list_bd .r_list li .p .num{text-align:right;padding-right:10px;}
+
+.sr-only2{position:absolute;width:65px;right:-70px;top:0;text-align:left;color:#333;}
+
+
+@-webkit-keyframes progress-bar-stripes {
+    from {
+        background-position: 40px 0
+    }
+
+    to {
+        background-position: 0 0
+    }
+}
+
+@-o-keyframes progress-bar-stripes {
+    from {
+        background-position: 40px 0
+    }
+
+    to {
+        background-position: 0 0
+    }
+}
+
+@keyframes progress-bar-stripes {
+    from {
+        background-position: 40px 0
+    }
+
+    to {
+        background-position: 0 0
+    }
+}
+.progress {
+    height: 16px;
+    margin-top:5px;
+    overflow: hidden;
+    background-color: #ecf0f1;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.1)
+}
+
+.progress-bar {
+    position:relative;
+    float: left;
+    width: 0;
+    height: 100%;
+    font-size: 12px;
+    line-height: 16px;
+    color: #fff;
+    text-align: right;
+    padding-right:5px;
+    background-color: #337ab7;
+    -webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+    box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+    -webkit-transition: width .6s ease;
+    -o-transition: width .6s ease;
+    transition: width .6s ease
+}
+
+.progress-striped .progress-bar,.progress-bar-striped {
+    background-image: -webkit-linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+    background-image: -o-linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+    background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+    -webkit-background-size: 25px 25px;
+    background-size: 25px 25px
+}
+
+.progress.active .progress-bar,.progress-bar.active {
+    -webkit-animation: progress-bar-stripes 2s linear infinite;
+    -o-animation: progress-bar-stripes 2s linear infinite;
+    animation: progress-bar-stripes 2s linear infinite
+}
+
+.progress-bar-success {
+    background-color: #5cb85c
+}
+
+.progress-striped .progress-bar-success {
+    background-image: -webkit-linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+    background-image: -o-linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+    background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent)
+}
+
+.progress-bar-info {
+    background-color: #5bc0de
+}
+
+.progress-striped .progress-bar-info {
+    background-image: -webkit-linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+    background-image: -o-linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+    background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent)
+}
+
+
+/* 搜索 */
+.pg_sear .frame_cont{padding:10px;}
+.pg_sear .nodata{margin-top:20px;color:#666;font-size:14px;}
+.nodata span{color:#f00;}
+.pg_sear .recommend{margin-top:20px;}
+.pg_sear .recommend h3{font-size:14px;color:#666;}
+.s_film_list li{float:left;width:33.3%;padding:0 4px;margin-top:10px;}
+.s_film_list li a{display:block;color:#444;}
+.s_film_list li span{display:block;}
+.s_film_list li .t{margin-top:3px;white-space:nowrap;text-overflow:ellipsis;overflow: hidden;text-align:center;}
+
+
+/* 分析 */
+.film_brief{position:relative;margin-top:10px;min-height:158px;background:#f6f6f6;border:1px solid #ddd;border-radius:3px;padding:8px;}
+.film_brief .p{position:absolute;left:8px;top:8px;width:100px;}
+.film_brief .t{padding:10px 0 0 110px;color:#666;}
+.film_brief .t dt{font-size:14px;margin-bottom:10px;}
+.film_brief .t dd{line-height:18px;margin-top:5px;}
+
+.pg_bi .frame_cont .r_tab li{width:50%;}
+.data-compare{margin-top:10px;}
+.data-compare .tit{background-color:#34495e;height:30px;line-height:30px;text-align:center;border-radius:5px;color:#fff;}
+.compare_list li{float:left;width:50%;margin-top:10px;padding:3px 0;}
+.compare_list li em{position:relative;display:inline-block;vertical-align:top;width:14px;height:14px;background-color:#ccc;border-radius:3px;margin-right:3px;}
+.compare_list .cur em:before{position:absolute;top:2px;left:2px;width:15px;height:15px;background-position:0 -102px;}
+
+.chart {
+  height:320px;
+  overflow: hidden;
+  margin-top: 10px;
+  border: 1px solid #e3e3e3;
+}
