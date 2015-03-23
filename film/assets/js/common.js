@@ -1,4 +1,4 @@
-//  tabÇĞ»»
+//  tabåˆ‡æ¢
 var zClick = 'ontouchstart' in document ? 'tap' : 'click';
 $('[data-tab-href]').bind(zClick,function(){
     var id = $(this).data('tab-href').slice(1);
@@ -8,15 +8,15 @@ $('[data-tab-href]').bind(zClick,function(){
     typeof tabChange=='function' &&  tabChange(id);
 })
 
-// ·µ»Ø¶¥²¿
+// è¿”å›é¡¶éƒ¨
 $('.backTop').bind(zClick,function(){
     $('html,body').animate({scrollTop:0},700)
     $(window).scrollTop(0)
 })
 $(window).scroll(function(){
-    //»ñÈ¡´°¿ÚµÄ¹ö¶¯ÌõµÄ´¹Ö±Î»ÖÃ
+    //è·å–çª—å£çš„æ»šåŠ¨æ¡çš„å‚ç›´ä½ç½®
     var s = $(window).scrollTop();
-    //µ±´°¿ÚµÄ¹ö¶¯ÌõµÄ´¹Ö±Î»ÖÃ´óÓÚÒ³ÃæµÄ×îĞ¡¸ß¶ÈÊ±£¬ÈÃ·µ»Ø¶¥²¿ÔªËØ½¥ÏÖ£¬·ñÔò½¥Òş
+    //å½“çª—å£çš„æ»šåŠ¨æ¡çš„å‚ç›´ä½ç½®å¤§äºé¡µé¢çš„æœ€å°é«˜åº¦æ—¶ï¼Œè®©è¿”å›é¡¶éƒ¨å…ƒç´ æ¸ç°ï¼Œå¦åˆ™æ¸éš
     if( s > 100){
 	$(".backTop").show();
     }else{
@@ -27,7 +27,18 @@ $(window).scroll(function(){
 
 // suggestion
 $('#search').bind('keyup',function(e){
+	e.stopPropagation();
     var v = $.trim($(this).val());
+    if(v){
+        $('#suggestion').show();
+    }else{
+        $('#suggestion').hide();
+    }
+	
+})
+$('#search').bind(zClick,function(e){
+	e.stopPropagation();
+	var v = $.trim($(this).val());
     if(v){
         $('#suggestion').show();
     }else{
@@ -36,28 +47,13 @@ $('#search').bind('keyup',function(e){
 })
 
 
-// Â·¾¶ÅäÖÃ
-require.config({
-    paths: {
-        echarts: './assets/js'
-    }
-});
+$(document).bind(zClick,function(e){
+	$('#suggestion').hide();
+})
 
-// Ê¹ÓÃ
-require(
-    [
-        'echarts',
-        'echarts/chart/line', // Ê¹ÓÃÖù×´Í¼¾Í¼ÓÔØbarÄ£¿é£¬°´Ğè¼ÓÔØ
-        'echarts/chart/bar'
-    ],
-    function (ec) {
-        trend(ec)
-    }
-);
-
-// 7ÌìÇ÷ÊÆ
+// 7å¤©è¶‹åŠ¿
 function trend(ec){
-    // »ùÓÚ×¼±¸ºÃµÄdom£¬³õÊ¼»¯echartsÍ¼±í
+    // åŸºäºå‡†å¤‡å¥½çš„domï¼Œåˆå§‹åŒ–echartså›¾è¡¨
     var myChart = ec.init(document.getElementById('main'));
 
     var option = {
@@ -111,10 +107,10 @@ function trend(ec){
             }
         ]
     };
-    // Îªecharts¶ÔÏó¼ÓÔØÊı¾İ
+    // ä¸ºechartså¯¹è±¡åŠ è½½æ•°æ®
     myChart.setOption(option);
 
-    // ¶Ô±È
+    // å¯¹æ¯”
     $('#compare1').bind(zClick,function(e){
         var tar = e.target, $tar = $(tar), $li, $em, idx;
         if(!$tar.closest('li').length){return false}
@@ -135,7 +131,7 @@ function trend(ec){
             len = option.series.length;
             while (len--) {
                 if (option.series[len].name == val) {
-                    // ÒÑ¾­Ìí¼Ó
+                    // å·²ç»æ·»åŠ 
                     added = true;
                     break;
                 }
@@ -156,7 +152,7 @@ function trend(ec){
     })
 }
 
-// ÇşµÀ·Ö²¼
+// æ¸ é“åˆ†å¸ƒ
 function channel(){
     var option1 = {
         tooltip : {
@@ -207,7 +203,7 @@ function channel(){
                 barCategoryGap:'30%',
                 markPoint : {
                     data : [
-                        {type : 'max', name: '×î´óÖµ'}
+                        {type : 'max', name: 'æœ€å¤§å€¼'}
                     ]
                 }
             }
@@ -217,7 +213,7 @@ function channel(){
     var myChartBar= require('echarts').init(document.getElementById('main2')).setOption(option1);
     myChartBar.setOption(option1);
 
-    // ¶Ô±È
+    // å¯¹æ¯”
     $('#compare2').bind(zClick,function(e){
         var tar = e.target, $tar = $(tar), $li, $em, idx;
         if(!$tar.closest('li').length){return false}
@@ -238,7 +234,7 @@ function channel(){
             len = option1.series.length;
             while (len--) {
                 if (option1.series[len].name == val) {
-                    // ÒÑ¾­Ìí¼Ó
+                    // å·²ç»æ·»åŠ 
                     added = true;
                     break;
                 }
@@ -252,7 +248,7 @@ function channel(){
                     "data": data_y2[idx+1],
                     'markPoint' : {
                         data : [
-                            {type : 'max', name: '×î´óÖµ'}
+                            {type : 'max', name: 'æœ€å¤§å€¼'}
                         ]
                     }
                 })
@@ -264,12 +260,12 @@ function channel(){
     })
 }
 
-// tabÇĞ»»³õÊ¼»¯charts
+// tabåˆ‡æ¢åˆå§‹åŒ–charts
 var flagInit = false;
 function tabChange(id){
     if(id=='list2'){
         if(!flagInit){
-            // Îªecharts¶ÔÏó¼ÓÔØÊı¾İ
+            // ä¸ºechartså¯¹è±¡åŠ è½½æ•°æ®
             channel();
             flagInit = true;
         }

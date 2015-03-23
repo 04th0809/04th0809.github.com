@@ -140,5 +140,25 @@
         var tit = '重返20岁';
     </script>
     <script src="assets/js/common.js"></script>
+	<script>
+		// 路径配置
+		require.config({
+			paths: {
+				echarts: './assets/js'
+			}
+		});
+
+		// 使用
+		require(
+			[
+				'echarts',
+				'echarts/chart/line', // 使用柱状图就加载bar模块，按需加载
+				'echarts/chart/bar'
+			],
+			function (ec) {
+				trend(ec)
+			}
+		);
+	</script>
 </body>
 </html>
