@@ -34,7 +34,7 @@ $('#search').bind('keyup',function(e){
     }else{
         $('#suggestion').hide();
     }
-	
+
 })
 $('#search').bind(zClick,function(e){
 	e.stopPropagation();
@@ -69,6 +69,7 @@ function trend(ec){
             })(),
             itemWidth:13,
             itemHeight:13,
+            selectedMode:false,
             x:'right',
             y:15
         },
@@ -167,6 +168,7 @@ function channel(){
             })(),
             itemWidth:13,
             itemHeight:13,
+            selectedMode:false,
             x:'right',
             y:15
         },
