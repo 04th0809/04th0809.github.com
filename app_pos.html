@@ -12,6 +12,7 @@
             location.href="mallcooapp://device/wifilocation?callback=fn";
             var $box = document.querySelector('#a');
             //var data = '{"success":1,"data":{"buildingId":"xx","floorId":"1","x":"1.000","y":"1.000"}}';
+            var b = '{"data":{"y":47,"floorId":"-2","x":61,"buildingId":"46"},"success":1}';
             //var data = '{"success":0,"error":"失败原因"}';
             function fn(data){
                 //{success:1,data:{buildingId:"xx",floorId:"1",x:"1.000",y:"1.000"}}
@@ -29,6 +30,7 @@
                 }
                 $box.innerHTML = html;
             }
+            fn(b)
         </script>
     </body>
 </html>
