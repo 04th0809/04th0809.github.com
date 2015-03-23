@@ -14,13 +14,20 @@
             <form>
                 <div class="input-group">
                     <div class="input-cont">
-                        <input type="text" placeholder="输入电影名称，看预告片精彩分析" class="form-control">
+                        <input type="text" placeholder="输入电影名称，看预告片精彩分析" class="form-control" id="search">
                     </div>
                     <span class="input-group-btn">
                         <button type="button" class="btn btn-sear"><i class="m-icon-magnifier"></i></button>
                     </span>
                 </div>
             </form>
+            <div class="suggestion" id="suggestion" style="display:none">
+                <ul>
+                    <li>奔跑吧</li>
+                    <li>奔跑吧</li>
+                    <li>奔跑吧</li>
+                </ul>
+            </div>
         </div>
         <div class="film_brief clearfixed">
             <div class="p">
@@ -56,22 +63,41 @@
                     <div class="data-compare">
                         <div class="tit">同期上映</div>
                         <div class="compare_list clearfixed">
-                            <ul id="compare">
-                                <li value="1"><em></em>三更车库</li>
-                                <li value="2"><em></em>战狼</li>
-                                <li value="3"><em></em>白幽灵传奇之绝命逃亡</li>
-                                <li value="4"><em></em>暴疯语</li>
-                                <li value="5"><em></em>冲锋车</li>
-                                <li value="6"><em></em>特功明星</li>
-                                <li value="7"><em></em>江南1970</li>
-                                <li value="8"><em></em>重生恋人</li>
-                                <li value="9"><em></em>超能查派</li>
-                                <li value="10"><em></em>技术者们</li>
+                            <ul id="compare1">
+                                <li><em></em>三更车库</li>
+                                <li><em></em>战狼</li>
+                                <li><em></em>白幽灵传奇之绝命逃亡</li>
+                                <li><em></em>暴疯语</li>
+                                <li><em></em>冲锋车</li>
+                                <li><em></em>特功明星</li>
+                                <li><em></em>江南1970</li>
+                                <li><em></em>重生恋人</li>
+                                <li><em></em>超能查派</li>
+                                <li><em></em>技术者们</li>
                             </ul>
                         </div>
                     </div>
                 </div>
-                <div data-tab-id="list2" class="tab-content">2</div>
+                <div data-tab-id="list2" class="tab-content">
+                    <div id="main2" class="chart"></div>
+                    <div class="data-compare">
+                        <div class="tit">同期上映</div>
+                        <div class="compare_list clearfixed">
+                            <ul id="compare2">
+                                <li><em></em>三更车库</li>
+                                <li><em></em>战狼</li>
+                                <li><em></em>白幽灵传奇之绝命逃亡</li>
+                                <li><em></em>暴疯语</li>
+                                <li><em></em>冲锋车</li>
+                                <li><em></em>特功明星</li>
+                                <li><em></em>江南1970</li>
+                                <li><em></em>重生恋人</li>
+                                <li><em></em>超能查派</li>
+                                <li><em></em>技术者们</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -80,135 +106,39 @@
     <script src="assets/js/touch.js"></script>
     <script src="assets/js/fx.js"></script>
     <script src="assets/js/echarts.js"></script>
-    <script src="assets/js/common.js"></script>
-    <script>
+    <script type="text/javascript">
         var colors = ['#ff6600','#37536c','#319d4a','#c82a2a','#d89a14','#be1dc8','#5d32b4','#1fb7b5','#88c322','#57b2e1','#828282'];
-        var data_x = ['2015.2.1','2015.2.2','2015.2.3','2015.2.4','2015.2.5','2015.2.6','2015.2.7'];
+        var data_x1 = ['2015.2.1','2015.2.2','2015.2.3','2015.2.4','2015.2.5','2015.2.6','2015.2.7'];
+        var data_x2 = ['优酷','土豆','腾讯','搜狐','乐视','其他'];
         //0 当前电影数据, 1-10同期数据
-        var data_y = {
+        var data_y1 = {
             0:[317686,225430,108217,90847,95382,89731,357732],
             1:[90847,95382,89731,357732,317686,225430,108217],
-            2:[90847,95382,89731,317686,225430,108217,357732]
+            2:[90847,95382,89731,317686,225430,108217,357732],
+            3:[317686,225430,208217,90847,95382,89731,357732],
+            4:[90847,95382,89431,357732,337686,225430,108217],
+            5:[317686,225430,158217,90847,55382,89731,357732],
+            6:[90847,95382,99761,357732,117686,225430,108217],
+            7:[317686,225430,908217,90847,11382,89731,357732],
+            8:[90847,95382,29731,357732,117686,225430,108217],
+            9:[317686,225430,808217,90847,95382,89731,357732],
+            10:[90847,95382,99731,357732,317686,225430,108217]
         };
+        var data_y2 = {
+            0:[42.0, 14.9, 7.0, 23.2, 25.6, 1.7],
+            1:[32.0, 4.9, 7.0, 23.2, 25.6, 1.7],
+            2:[12.0, 14.9, 9.0, 53.2, 5.6, 1.7],
+            3:[32.0, 4.9, 7.0, 23.2, 25.6, 1.7],
+            4:[12.0, 14.9, 9.0, 53.2, 5.6, 1.7],
+            5:[12.0, 14.9, 9.0, 53.2, 5.6, 1.7],
+            6:[32.0, 4.9, 7.0, 23.2, 25.6, 1.7],
+            7:[12.0, 14.9, 9.0, 53.2, 5.6, 1.7],
+            8:[32.0, 4.9, 7.0, 23.2, 25.6, 1.7],
+            9:[12.0, 14.9, 29.0, 3.2, 5.6, 1.7],
+            10:[2.0, 14.9, 9.0, 53.2, 5.6, 1.7]
+        }
         var tit = '重返20岁';
     </script>
-    <script type="text/javascript">
-        // 路径配置
-        require.config({
-            paths: {
-                echarts: 'http://echarts.baidu.com/build/dist'
-            }
-        });
-
-        // 使用
-        require(
-            [
-                'echarts',
-                'echarts/chart/line' // 使用柱状图就加载bar模块，按需加载
-            ],
-            function (ec) {
-                // 基于准备好的dom，初始化echarts图表
-                var myChart = ec.init(document.getElementById('main'));
-
-                var option = {
-                    tooltip: {
-                        trigger: 'axis'
-                    },
-                    legend: {
-                        data: (function(){
-                               var arr = [];
-                               //var d = {name:tit, textStyle:{color:colors[0]}}
-                               arr.push(tit)
-                               return arr;
-                        })(),
-                        itemWidth:10,
-                        itemHeight:10,
-                        x:'right',
-                        y:15
-                    },
-                    color:colors,
-                    grid:{
-                        x:80,
-                        y:40,
-                        x2:60,
-                        y2:40
-                    },
-                    xAxis : [
-                        {
-                            type : 'category',
-                            boundaryGap : false,
-                            axisLine:{
-                                lineStyle:{color:'#0091cb',width:1}
-                            },
-                            splitLine:{lineStyle:{color:['#eee']}},
-                            data : data_x
-                        }
-                    ],
-                    yAxis : [
-                        {
-                            type : 'value',
-                            splitLine:{lineStyle:{color:['#e0e0e0']}},
-                            axisLine:{lineStyle:{color:'#0091cb',width:1}}
-                        }
-                    ],
-
-                    series : [
-                        {
-                            "name":tit,
-                            "type":"line",
-                            symbol:'emptyCircle',
-                            symbolSize:4,
-                            "data": data_y[0]
-                        }
-                    ]
-                };
-                // 为echarts对象加载数据
-                myChart.setOption(option);
-
-
-
-                // 对比
-                $('#compare').bind(zClick,function(e){
-                    var tar = e.target, $tar = $(tar), $li, $em, idx;
-                    if(!$tar.closest('li').length){return false}
-                    $li = $tar.closest('li');
-                    $em = $li.find('em');
-                    idx = $li.index();
-                    var val = $li.attr('value');
-                var legend = myChart.chart['line'].component.legend;
-                    if($li.hasClass('cur')){
-                        $li.removeClass('cur');
-                        $em.css({'background-color':''})
-                        legend.setSelected(val,false);
-                    }else{
-                        $li.addClass('cur');
-                        $em.css({'background-color':colors[idx+1]})
-
-                        var added = false,len;
-                        len = option.series.length;
-                        while (len--) {
-                            if (option.series[len].name == val) {
-                                // 已经添加
-                                added = true;
-                                break;
-                            }
-                        }
-                        if(!added){
-                            option.series.push({
-                                "name": val,
-                                "type":"line",
-                                'symbol':'emptyCircle',
-                                'symbolSize':4,
-                                "data": data_y[idx+1]
-                            })
-                            myChart.setOption(option);
-                        }else{
-                            legend.setSelected(val,true);
-                        }
-                    }
-                })
-            }
-        );
-    </script>
+    <script src="assets/js/common.js"></script>
 </body>
 </html>

@@ -29,7 +29,7 @@ width: 0px; height: 0px;border-width:10px; border-style: solid; border-color: tr
 .tab-content.cur{display:block}
 
 .container{padding:10px 5px;}
-.searchBox{overflow:hidden;}
+.searchBox{position:relative;}
 .input-group {position:relative;display:table;border-collapse:separate;}
 .form-control {
     background-color: #fff;
@@ -240,3 +240,8 @@ width: 0px; height: 0px;border-width:10px; border-style: solid; border-color: tr
   margin-top: 10px;
   border: 1px solid #e3e3e3;
 }
+
+/* suggestion */
+.suggestion{position:absolute;width:100%;top:35px;left:0;z-index:10;background:#fff;border:1px solid #ddd;padding:5px 0;}
+.suggestion li{height:24px;line-height:24px;padding-left:5px;}
+.suggestion li:active{background:#eee;}
