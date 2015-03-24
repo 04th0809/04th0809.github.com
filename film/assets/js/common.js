@@ -126,8 +126,6 @@ function trend(ec){
             legend.setSelected(val,false);
         }else{
             $li.addClass('cur');
-            $em.css({'background-color':colors[idx+1]})
-
             var added = false,len;
             len = option.series.length;
             while (len--) {
@@ -143,8 +141,14 @@ function trend(ec){
                     "type":"line",
                     'symbol':'emptyCircle',
                     'symbolSize':4,
+                    'itemStyle': {
+                        normal: {
+                            lineStyle: {color: colors[idx+1]}
+                        }
+                    },
                     "data": data_y1[idx+1]
                 })
+                $em.css({'background-color':colors[idx+1]})
                 myChart.setOption(option);
             }else{
                 legend.setSelected(val,true);
@@ -212,7 +216,7 @@ function channel(){
         ]
     };
 
-    var myChartBar= require('echarts').init(document.getElementById('main2')).setOption(option1);
+    var myChartBar= require('echarts').init(document.getElementById('main2'));
     myChartBar.setOption(option1);
 
     // 对比
@@ -230,8 +234,6 @@ function channel(){
             legend.setSelected(val,false);
         }else{
             $li.addClass('cur');
-            $em.css({'background-color':colors[idx+1]})
-
             var added = false,len;
             len = option1.series.length;
             while (len--) {
@@ -247,6 +249,11 @@ function channel(){
                     "type":"bar",
                     'symbol':'emptyCircle',
                     'symbolSize':4,
+                    'itemStyle': {
+                        normal: {
+                            color:colors[idx+1]
+                        }
+                    },
                     "data": data_y2[idx+1],
                     'markPoint' : {
                         data : [
@@ -254,6 +261,7 @@ function channel(){
                         ]
                     }
                 })
+                $em.css({'background-color':colors[idx+1]})
                 myChartBar.setOption(option1);
             }else{
                 legend.setSelected(val,true);
