@@ -126,6 +126,7 @@ function trend(ec){
             legend.setSelected(val,false);
         }else{
             $li.addClass('cur');
+            $em.css({'background-color':colors[idx+1]})
             var added = false,len;
             len = option.series.length;
             while (len--) {
@@ -143,12 +144,13 @@ function trend(ec){
                     'symbolSize':4,
                     'itemStyle': {
                         normal: {
-                            lineStyle: {color: colors[idx+1]}
+                            //lineStyle: {color: colors[idx+1]}
+                            color:colors[idx+1]
                         }
                     },
+
                     "data": data_y1[idx+1]
                 })
-                $em.css({'background-color':colors[idx+1]})
                 myChart.setOption(option);
             }else{
                 legend.setSelected(val,true);
@@ -234,6 +236,7 @@ function channel(){
             legend.setSelected(val,false);
         }else{
             $li.addClass('cur');
+            $em.css({'background-color':colors[idx+1]})
             var added = false,len;
             len = option1.series.length;
             while (len--) {
@@ -258,10 +261,14 @@ function channel(){
                     'markPoint' : {
                         data : [
                             {type : 'max', name: '最大值'}
-                        ]
+                        ],
+                        'itemStyle': {
+                            normal: {
+                                color:colors[idx+1]
+                            }
+                        }
                     }
                 })
-                $em.css({'background-color':colors[idx+1]})
                 myChartBar.setOption(option1);
             }else{
                 legend.setSelected(val,true);
