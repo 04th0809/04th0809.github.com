@@ -106,7 +106,11 @@ function trend(ec){
                         fontFamily: 'Arial'
                     },
                     formatter:function(value){
-                        return value/10000+'万'
+                        if(value>10000){
+                            return value/10000+'万'
+                        }else{
+                            return value
+                        }
                     }
                 },
                 splitLine:{lineStyle:{color:['#f0f0f0']}},
@@ -222,7 +226,11 @@ function channel(){
                         fontFamily: 'Arial'
                     },
                     formatter:function(value){
-                        return value/10000+'万'
+                        if(value>10000){
+                            return value/10000+'万'
+                        }else{
+                            return value
+                        }
                     }
                 },
                 splitLine:{lineStyle:{color:['#f0f0f0']}},
