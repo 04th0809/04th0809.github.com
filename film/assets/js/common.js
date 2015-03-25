@@ -75,15 +75,21 @@ function trend(ec){
         },
         color:colors,
         grid:{
-            x:80,
+            x:50,
             y:40,
-            x2:60,
+            x2:30,
             y2:40
         },
         xAxis : [
             {
                 type : 'category',
                 boundaryGap : false,
+                'axisLabel':{
+                    'textStyle': {
+                        fontSize: '12',
+                        fontFamily: 'Microsoft YaHei'
+                    }
+                },
                 axisLine:{
                     lineStyle:{color:'#0091cb',width:1}
                 },
@@ -94,6 +100,15 @@ function trend(ec){
         yAxis : [
             {
                 type : 'value',
+                'axisLabel':{
+                    'textStyle': {
+                        fontSize: '13',
+                        fontFamily: 'Arial'
+                    },
+                    formatter:function(value){
+                        return value/10000+'万'
+                    }
+                },
                 splitLine:{lineStyle:{color:['#f0f0f0']}},
                 axisLine:{lineStyle:{color:'#0091cb',width:1}}
             }
@@ -104,7 +119,7 @@ function trend(ec){
                 "type":"line",
                 symbol:'emptyCircle',
                 symbolSize:4,
-                "data": data_y1[0]
+                data:data_y1[0]
             }
         ]
     };
@@ -144,12 +159,10 @@ function trend(ec){
                     'symbolSize':4,
                     'itemStyle': {
                         normal: {
-                            //lineStyle: {color: colors[idx+1]}
                             color:colors[idx+1]
                         }
                     },
-
-                    "data": data_y1[idx+1]
+                    data:data_y1[idx+1]
                 })
                 myChart.setOption(option);
             }else{
@@ -168,7 +181,6 @@ function channel(){
         legend: {
             data: (function(){
                    var arr = [];
-                   //var d = {name:tit, textStyle:{color:colors[0]}}
                    arr.push(tit)
                    return arr;
             })(),
@@ -180,14 +192,20 @@ function channel(){
         },
         color:colors,
         grid:{
-            x:40,
+            x:50,
             y:40,
-            x2:40,
+            x2:30,
             y2:40
         },
         xAxis : [
             {
                 type : 'category',
+                'axisLabel':{
+                    'textStyle': {
+                        fontSize: '12',
+                        fontFamily: 'Microsoft YaHei'
+                    }
+                },
                 axisLine:{
                     lineStyle:{color:'#0091cb',width:1}
                 },
@@ -198,6 +216,15 @@ function channel(){
         yAxis : [
             {
                 type : 'value',
+                'axisLabel':{
+                    'textStyle': {
+                        fontSize: '13',
+                        fontFamily: 'Arial'
+                    },
+                    formatter:function(value){
+                        return value/10000+'万'
+                    }
+                },
                 splitLine:{lineStyle:{color:['#f0f0f0']}},
                 axisLine:{lineStyle:{color:'#0091cb',width:1}}
             }
@@ -206,7 +233,7 @@ function channel(){
             {
                 name:tit,
                 type:'bar',
-                data:[42.0, 14.9, 7.0, 23.2, 25.6, 1.7],
+                data:data_y2[0],
                 barGap:'4',
                 barCategoryGap:'30%',
                 markPoint : {
@@ -275,16 +302,4 @@ function channel(){
             }
         }
     })
-}
-
-// tab切换初始化charts
-var flagInit = false;
-function tabChange(id){
-    if(id=='list2'){
-        if(!flagInit){
-            // 为echarts对象加载数据
-            channel();
-            flagInit = true;
-        }
-    }
 }
