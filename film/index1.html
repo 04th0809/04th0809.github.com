@@ -31,12 +31,12 @@
         </div>
         <!--tit-->
         <div class="titBox">
-            <h2>预告片播放量排行榜</h2>
+            <h2>想看影片排行榜</h2>
             <div class="lk_btn index_btn"></div>
             <div class="list">
                 <ul>
-                	<li class="cur">预告片播放量排行榜</li>
-                	<li>影片想看人数排行榜</li>
+                	<li>预告片播放量排行榜</li>
+                	<li class="cur">影片想看人数排行榜</li>
                 	<li>影片评分排行榜（即将上线，敬请期待）</li>
                 </ul>
             </div>
@@ -49,6 +49,15 @@
                     <li class="cur" data-time="1">热映中</li>
                     <li data-time="2">近1个月上映</li>
                     <li data-time="3">近2个月上映</li>
+                </ul>
+            </div>
+            <div class="r_tab1 clearfixed" data-tab-realdata='#d1'>
+                <ul>
+                    <li class="cur" data-channel="1"><span>猫眼</span></li>
+                    <li data-channel="2"><span>豆瓣电影</span></li>
+                    <li data-channel="3"><span>时光网</span></li>
+                    <li data-channel="4"><span>格瓦拉</span></li>
+                    <li data-channel="5"><span>360影视</span></li>
                 </ul>
             </div>
             <div class="list_bd" data-tab-id='d1'>
@@ -70,7 +79,7 @@
     <script src="assets/js/common.js"></script>
     <script>
         // 默认加载
-        getData('d1',1)
+        getData('d1',1,1)
 
         // id 代表容器,  t代表时间(热映，1个月类型)
         $('[data-tab-realdata]').bind(zClick,function(e){
@@ -84,13 +93,18 @@
             if($li.length){
                 if($li.hasClass('cur')){return false}
                 $li.addClass('cur').siblings().removeClass('cur');
-                t = $('.r_tab .cur').data('time');
+                if(isTab){
+                    $('.r_tab1 li').eq(0).addClass('cur').siblings().removeClass('cur');
+                }
 
-                getData(id,t)
+                t = $('.r_tab .cur').data('time');
+                channel = $('.r_tab1 .cur').data('channel');
+
+                getData(id,t,channel)
             }
         })
         // 获取数据
-        function getData(id,t){
+        function getData(id,t,channel){
             var $box = $('[data-tab-id='+ id +']'), $ul = $box.find('ul'), $load= $box.find('.spinner9');
             $load.show();
             $ul.html('');

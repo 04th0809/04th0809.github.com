@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	<title></title>
+    <link rel="stylesheet" href="assets/css/index.css">
+</head>
+<body class="pg_bi">
+    <div class="banner"><img src="assets/img/banner.jpg" alt="" width="100%"></div>
+    <div class="container">
+        <!--搜索-->
+        <div class="searchBox">
+            <form>
+                <div class="input-group">
+                    <div class="input-cont">
+                        <input type="text" placeholder="输入电影名称，看预告片精彩分析" class="form-control" id="search">
+                    </div>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-sear"><i class="m-icon-magnifier"></i></button>
+                    </span>
+                </div>
+            </form>
+            <div class="suggestion" id="suggestion" style="display:none">
+                <ul>
+                    <li>奔跑吧</li>
+                    <li>奔跑吧</li>
+                    <li>奔跑吧</li>
+                </ul>
+            </div>
+        </div>
+        <div class="film_brief clearfixed">
+            <div class="p">
+                <img src="http://p0.meituan.net/165.220/movie/a4f309b98a8e02bff70982d6118de3591478900.jpg" width="100%">
+            </div>
+            <div class="t">
+                <dl>
+                    <dt>重返20岁</dt>
+                    <dd>导演：陈正道</dd>
+                    <dd>主演：杨子姗，归亚蕾，陈柏霖，鹿晗</dd>
+                    <dd>上映日期：1月10日</dd>
+                    <dd>播放总量：2,345万</dd>
+                </dl>
+            </div>
+        </div>
+        <!--tit-->
+        <div class="titBox">
+            <h2>影片想看人数分析</h2>
+            <div class="lk_btn back_home_btn"></div>
+        </div>
+        <!--排行榜-->
+        <div class="frame_cont">
+            <!--tab-->
+            <div class="r_tab1 clearfixed" data-tab-realdata='#d1'>
+                <ul>
+                    <li class="cur" data-channel="1"><span>猫眼</span></li>
+                    <li data-channel="2"><span>豆瓣电影</span></li>
+                    <li data-channel="3"><span>时光网</span></li>
+                    <li data-channel="4"><span>格瓦拉</span></li>
+                    <li data-channel="5"><span>360影视</span></li>
+                </ul>
+            </div>
+            <div class="list_bd">
+                <div data-tab-id="list2" class="tab-content cur">
+                    <div id="main" class="chart"></div>
+                    <div class="data-compare">
+                        <div class="tit">同期上映</div>
+                        <div class="compare_list clearfixed">
+                            <ul id="compare2">
+                                <li><em></em>三更车库</li>
+                                <li><em></em>战狼</li>
+                                <li><em></em>白幽灵传奇之绝命逃亡</li>
+                                <li><em></em>暴疯语</li>
+                                <li><em></em>冲锋车</li>
+                                <li><em></em>特功明星</li>
+                                <li><em></em>江南1970</li>
+                                <li><em></em>重生恋人</li>
+                                <li><em></em>超能查派</li>
+                                <li><em></em>技术者们</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="backTop"></div>
+    <script src="assets/js/zepto.min.js"></script>
+    <script src="assets/js/touch.js"></script>
+    <script src="assets/js/fx.js"></script>
+    <script src="assets/js/echarts.js"></script>
+    <script type="text/javascript">
+        var colors = ['#ff6600','#37536c','#319d4a','#c82a2a','#d89a14','#be1dc8','#5d32b4','#808000','#88c322','#57b2e1','#828282'];
+        var data_x1 = ['2/1','2/2','2/3','2/4','2/5','2/6','2/7'];
+        //0 当前电影数据, 1-10同期数据
+        var data_y1 = {
+            0:[317686,225430,108217,90847,95382,89731,357732],
+            1:[90847,95382,89731,357732,317686,225430,108217],
+            2:[90847,95382,89731,317686,225430,108217,357732],
+            3:[317686,225430,208217,90847,95382,89731,357732],
+            4:[90847,95382,89431,357732,337686,225430,108217],
+            5:[317686,225430,158217,90847,55382,89731,357732],
+            6:[90847,95382,99761,357732,117686,225430,108217],
+            7:[317686,225430,908217,90847,11382,89731,357732],
+            8:[90847,95382,29731,357732,117686,225430,108217],
+            9:[317686,225430,808217,90847,95382,89731,357732],
+            10:[90847,95382,99731,357732,317686,225430,108217]
+        };
+        var tit = '重返20岁';
+    </script>
+    <script src="assets/js/common.js"></script>
+	<script>
+		// 路径配置
+		require.config({
+			paths: {
+				echarts: './assets/js'
+			}
+		});
+
+		// 使用
+		require(
+			[
+				'echarts',
+				'echarts/chart/line', // 使用柱状图就加载bar模块，按需加载
+				'echarts/chart/bar'
+			],
+			function (ec) {
+				trend(ec)
+			}
+		);
+	</script>
+</body>
+</html>
