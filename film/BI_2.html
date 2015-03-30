@@ -45,21 +45,11 @@
         </div>
         <!--tit-->
         <div class="titBox">
-            <h2>影片想看人数分析</h2>
+            <h2>影片评分分析</h2>
             <div class="lk_btn back_home_btn"></div>
         </div>
         <!--排行榜-->
         <div class="frame_cont">
-            <!--tab-->
-            <div class="r_tab1 clearfixed" data-tab-realdata='#d2'>
-                <ul>
-                    <li class="cur" data-tab-href="#list1"><span>猫眼</span></li>
-                    <li data-tab-href="#list2"><span>豆瓣电影</span></li>
-                    <li data-tab-href="#list3"><span>时光网</span></li>
-                    <li data-tab-href="#list4"><span>格瓦拉</span></li>
-                    <li data-tab-href="#list5"><span>360影视</span></li>
-                </ul>
-            </div>
             <div class="list_bd">
                 <div data-tab-id="list1" class="tab-content cur">
                     <div data-main="main" class="chart"></div>
@@ -111,34 +101,21 @@
     <script src="assets/js/echarts.js"></script>
     <script type="text/javascript">
         var colors = ['#ff6600','#37536c','#319d4a','#c82a2a','#d89a14','#be1dc8','#5d32b4','#808000','#88c322','#57b2e1','#828282'];
-        var data_x1 = ['2/1','2/2','2/3','2/4','2/5','2/6','2/7'];
+        var data_x1 = ['优酷','土豆','腾讯','搜狐','乐视','其他'];
         //0 当前电影数据, 1-10同期数据
         var data_y1 = {
             'list1':{
-                0:[317686,225430,108217,90847,95382,89731,357732],
-                1:[90847,95382,89731,357732,317686,225430,108217],
-                2:[90847,95382,89731,317686,225430,108217,357732],
-                3:[317686,225430,208217,90847,95382,89731,357732],
-                4:[90847,95382,89431,357732,337686,225430,108217],
-                5:[317686,225430,158217,90847,55382,89731,357732],
-                6:[90847,95382,99761,357732,117686,225430,108217],
-                7:[317686,225430,908217,90847,11382,89731,357732],
-                8:[90847,95382,29731,357732,117686,225430,108217],
-                9:[317686,225430,808217,90847,95382,89731,357732],
-                10:[90847,95382,99731,357732,317686,225430,108217]
-            },
-            'list2':{
-                0:[317686,225430,108217,90847,95382,89731,357732],
-                1:[90847,95382,89731,357732,317686,225430,108217],
-                2:[90847,95382,89731,317686,225430,108217,357732],
-                3:[317686,225430,208217,90847,95382,89731,357732],
-                4:[90847,95382,89431,357732,337686,225430,108217],
-                5:[317686,225430,158217,90847,55382,89731,357732],
-                6:[90847,95382,99761,357732,117686,225430,108217],
-                7:[317686,225430,908217,90847,11382,89731,357732],
-                8:[90847,95382,29731,357732,117686,225430,108217],
-                9:[317686,225430,808217,90847,95382,89731,357732],
-                10:[90847,95382,99731,357732,317686,225430,108217]
+                0:[9,4,6,7,8,2],
+                1:[3,4,6,7,8,2],
+                2:[5,4,6,7,8,2],
+                3:[9,4,6,7,8,2],
+                4:[3,4,6,7,8,2],
+                5:[9,4,6,7,8,2],
+                6:[9,4,6,7,8,2],
+                7:[9,4,6,7,8,2],
+                8:[9,4,6,7,8,2],
+                9:[9,4,6,7,8,2],
+                10:[9,4,6,7,8,2]
             }
         };
         var tit = '重返20岁';
@@ -156,8 +133,7 @@
 		require(
 			[
 				'echarts',
-				'echarts/chart/line', // 使用柱状图就加载bar模块，按需加载
-				'echarts/chart/bar'
+				'echarts/chart/bar' // 使用柱状图就加载bar模块，按需加载
 			],
 			function (ec) {
                 trend('list1');
@@ -183,7 +159,7 @@
                 $em = $li.find('em');
                 idx = $li.index();
                 var val = $li.text();
-                var legend = myChart.chart['line'].component.legend;
+                var legend = myChart.chart['bar'].component.legend;
                 if($li.hasClass('cur')){
                     $li.removeClass('cur');
                     $em.css({'background-color':''})
@@ -203,16 +179,20 @@
                     if(!added){
                         option.series.push({
                             "name": val,
-                            "type":"line",
+                            "type":"bar",
                             'symbol':'emptyCircle',
                             'symbolSize':4,
                             'itemStyle': {
                                 normal: {
-                                    color:colors[idx+1]
+                                    color:colors[idx+1],
+                                    label : {
+                                        show: true, position: 'insideTop'
+                                    }
                                 }
                             },
-                            data:data_y1[id][idx+1]
+                            "data": data_y1[id][idx+1]
                         })
+
                         myChart.setOption(option);
                     }else{
                         legend.setSelected(val,true);
@@ -222,7 +202,7 @@
         }
         function getOpt(key){
             var option = {
-                tooltip: {
+                tooltip : {
                     trigger: 'axis'
                 },
                 legend: {
@@ -247,7 +227,6 @@
                 xAxis : [
                     {
                         type : 'category',
-                        boundaryGap : false,
                         'axisLabel':{
                             'textStyle': {
                                 fontSize: '12',
@@ -270,11 +249,7 @@
                                 fontFamily: 'Arial'
                             },
                             formatter:function(value){
-                                if(value>=10000){
-                                    return value/10000+'万'
-                                }else{
-                                    return value
-                                }
+                                return value
                             }
                         },
                         splitLine:{lineStyle:{color:['#f0f0f0']}},
@@ -283,24 +258,22 @@
                 ],
                 series : [
                     {
-                        "name":tit,
-                        "type":"line",
-                        symbol:'emptyCircle',
-                        symbolSize:4,
-                        data:data_y1[key][0]
+                        name:tit,
+                        type:'bar',
+                        data:data_y1[key][0],
+                        barGap:'4',
+                        barCategoryGap:'30%',
+                        itemStyle: {
+                            normal: {
+                                label : {
+                                    show: true, position: 'insideTop'
+                                }
+                            }
+                        }
                     }
                 ]
             };
             return option;
-        }
-
-        // tab切换初始化charts
-        function tabChange(id){
-            var $bd = $('[data-tab-id='+ id +']');
-            if(!$bd.data('flag')){
-                // 为echarts对象加载数据
-                trend(id);
-            }
         }
 	</script>
 </body>

@@ -93,9 +93,11 @@
             if($li.length){
                 if($li.hasClass('cur')){return false}
                 $li.addClass('cur').siblings().removeClass('cur');
+                /*
                 if(isTab){
                     $('.r_tab1 li').eq(0).addClass('cur').siblings().removeClass('cur');
                 }
+                */
 
                 t = $('.r_tab .cur').data('time');
                 channel = $('.r_tab1 .cur').data('channel');
@@ -146,11 +148,6 @@
                 return item
             }
         }
-
-        // 列表
-        $('.index_btn').bind(zClick,function(){
-            $('.titBox .list').toggle();
-        })
     </script>
 </body>
 </html>

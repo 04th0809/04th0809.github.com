@@ -87,16 +87,11 @@
                 tar = e.target,
                 $tar= $(tar),
                 $li = $tar.closest('li'),
-                isTab = $tar.closest('.r_tab').length,
                 t,
                 channel;
             if($li.length){
                 if($li.hasClass('cur')){return false}
                 $li.addClass('cur').siblings().removeClass('cur');
-                if(isTab){
-                    $('.r_tab1 li').eq(0).addClass('cur').siblings().removeClass('cur');
-                }
-
                 t = $('.r_tab .cur').data('time');
                 channel = $('.r_tab1 .cur').data('channel');
 
@@ -117,8 +112,8 @@
                     setTimeout(function(){
                         var res = [
                             {name:'微爱之渐入佳境1', time:'2015.11.15', score:10},
-                            {name:'微爱之渐入佳境2', time:'2015.11.15', score:8},
-                            {name:'微爱之渐入佳境3', time:'2015.11.15', score:7},
+                            {name:'微爱之渐入佳境2', time:'2015.11.15', score:8.5},
+                            {name:'微爱之渐入佳境3', time:'2015.11.15', score:7.4},
                             {name:'微爱之渐入佳境4', time:'2015.11.15', score:5},
                             {name:'微爱之渐入佳境5', time:'2015.11.15', score:5}
                         ]
@@ -140,16 +135,11 @@
                 var item = '';
                 item+='<li>'+
                     '<div class="t"><span class="name">'+ d.name +'</span><span class="time">'+ d.time +'</span></div>'+
-                    '<div class="p scoreBar"><i class="level-star star'+ d.score +'"></i><span class="score">'+ d.score +'分</span></div>'+
+                    '<div class="p scoreBar"><i class="level-star star'+ Math.round(d.score) +'"></i><span class="score">'+ d.score +'分</span></div>'+
                 '</li>'
                 return item
             }
         }
-
-        // 列表
-        $('.index_btn').bind(zClick,function(){
-            $('.titBox .list').toggle();
-        })
     </script>
 </body>
 </html>
