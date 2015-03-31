@@ -52,8 +52,14 @@ $('.index_btn').bind(zClick,function(e){
     e.stopPropagation();
 })
 
+$('.titBox .list li').bind(zClick,function(e){
+    var href = $(this).data('link');
+    location.href=href;
+});
+
 $(document).bind(zClick,function(e){
 	$('#suggestion').hide();
     $('.titBox .list').hide();
 })
+
 
