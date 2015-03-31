@@ -52,10 +52,15 @@ $('.index_btn').bind(zClick,function(e){
     e.stopPropagation();
 })
 
-$('.titBox .list li').bind(zClick,function(e){
-    var href = $(this).data('link');
-    location.href=href;
-});
+// link 链接
+$('body').bind(zClick,function(e){
+    var $tar = $(e.target),
+        $link = $tar.closest('[data-link]');
+    if($link.length){
+        var href = $link.data('link');
+        location.href=href;
+    }
+})
 
 $(document).bind(zClick,function(e){
 	$('#suggestion').hide();
